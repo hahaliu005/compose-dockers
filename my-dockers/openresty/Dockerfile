@@ -15,3 +15,6 @@ RUN cd openresty-1.9.7.4 && \
     gmake && \
     gmake install
 
+EXPOSE 80
+
+CMD ["/usr/local/openresty/nginx/sbin/nginx", "-g", "daemon off;"]

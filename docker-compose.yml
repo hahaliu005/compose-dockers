@@ -1,4 +1,4 @@
 openresty:
-    build: ./my-docker/opensty
+    build: ./my-dockers/openresty
     ports:
         - 9090:80
