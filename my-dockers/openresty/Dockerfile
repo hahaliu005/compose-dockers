@@ -2,6 +2,8 @@ FROM centos:6.7
 
 WORKDIR /root
 
+RUN yum -y update
+
 RUN yum groupinstall -y 'Development Tools'
 
 RUN yum install -y wget vim tar pcre-devel openssl-devel

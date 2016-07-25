@@ -1,4 +1,9 @@
+redis:
+    build: ./my-dockers/redis
+
 openresty:
     build: ./my-dockers/openresty
     ports:
         - 9090:80
+    links:
+        - redis
