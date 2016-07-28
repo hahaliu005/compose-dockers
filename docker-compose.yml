@@ -1,9 +1,35 @@
-redis:
-    build: ./my-dockers/redis
-
-openresty:
-    build: ./my-dockers/openresty
+mysql:
+    build: ./mysql
     ports:
-        - 9090:80
+        - 33065:3306
+    environment:
+        MYSQL_ROOT_PASSWORD: 111
+        MYSQL_DATABASE: test
+    volumes:
+        - ./data/mysql:/var/lib/mysql
+
+php:
+    build: ./php
+    ports:
+        - 9005:9000
     links:
         - redis
+        - mysql
+    volumes:
+        - ./data/html:/usr/local/nginx/html
+
+nginx:
+    build: ./nginx
+    ports:
+        - 8005:80
+    links:
+        - redis
+        - mysql
+        - php
+    volumes:
+        - ./data/html:/usr/local/nginx/html
+
+redis:
+    build: ./redis
+    ports:
+        - 63791:6379
