@@ -1,5 +1,5 @@
 mysql:
-    build: ./mysql
+    build: ./my-dockers/mysql
     ports:
         - 33065:3306
     environment:
@@ -9,7 +9,7 @@ mysql:
         - ./data/mysql:/var/lib/mysql
 
 php:
-    build: ./php
+    build: ./my-dockers/php
     ports:
         - 9005:9000
     links:
@@ -19,7 +19,7 @@ php:
         - ./data/html:/usr/local/nginx/html
 
 nginx:
-    build: ./nginx
+    build: ./my-dockers/nginx
     ports:
         - 8005:80
     links:
@@ -30,6 +30,6 @@ nginx:
         - ./data/html:/usr/local/nginx/html
 
 redis:
-    build: ./redis
+    build: ./my-dockers/redis
     ports:
         - 63791:6379
